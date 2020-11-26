@@ -48,7 +48,7 @@ namespace Robot_Git
 
         //Imatge robot
         private ImageBrush imgRobot = new ImageBrush();
-        private string rutaRobot = "robot.jpg";
+        private string rutaRobot = "robot23.jpg";
 
 
         //Imatge flecha
