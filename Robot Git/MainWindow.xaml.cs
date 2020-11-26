@@ -55,7 +55,7 @@ namespace Robot_Git
             //Temporitzador
             DispatcherTimer temporitzador = new DispatcherTimer();
             temporitzador.Tick += new EventHandler(temporitzador_Tick);
-            temporitzador.Interval = new TimeSpan(1000000);
+            temporitzador.Interval = new TimeSpan(100000);
 
 
             //Indicar la imatge als ImageBrush
@@ -80,7 +80,16 @@ namespace Robot_Git
         {
             GiraRobot();
             MoureRobot();
-            
+            RobotGuanya();
+        }
+
+        private void RobotGuanya()
+        {
+            if(posicioRobot.X == posicioTresor.X && posicioRobot.Y == posicioTresor.Y)
+            {
+                MessageBox.Show("Has guanyat!");
+                this.Close();
+            }
         }
 
         private void GiraRobot()
