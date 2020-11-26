@@ -33,6 +33,7 @@ namespace Robot_Git
 
         //Parametres
         private const int TAMANY_ELEMENTS = 50;
+        private const int FREQUENCIA = 100000;
 
         //Random
         private Random random = new Random();
@@ -63,7 +64,7 @@ namespace Robot_Git
             //Temporitzador
             DispatcherTimer temporitzador = new DispatcherTimer();
             temporitzador.Tick += new EventHandler(temporitzador_Tick);
-            temporitzador.Interval = new TimeSpan(100000);
+            temporitzador.Interval = new TimeSpan(FREQUENCIA);
 
 
 
