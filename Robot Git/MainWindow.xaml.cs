@@ -49,18 +49,23 @@ namespace Robot_Git
         private ImageBrush imgRobot = new ImageBrush();
         private string rutaRobot = "robot.jpg";
 
+        //Imatge flecha
+        private ImageBrush imgFlecha = new ImageBrush();
+        private string rutaFlecha = "flecha.png";
+
         public MainWindow()
         {
             InitializeComponent();
             //Temporitzador
             DispatcherTimer temporitzador = new DispatcherTimer();
             temporitzador.Tick += new EventHandler(temporitzador_Tick);
-            temporitzador.Interval = new TimeSpan(100000);
+            temporitzador.Interval = new TimeSpan(10000000);
 
 
             //Indicar la imatge als ImageBrush
             imgTresor.ImageSource = new BitmapImage(new Uri(rutaTresor, UriKind.Relative));
             imgRobot.ImageSource = new BitmapImage(new Uri(rutaRobot, UriKind.Relative));
+            
 
             //Determinar la posicio inicial dels elements
             posicioRobot = new Point(random.Next(0, (int)canvasRobot.Width / TAMANY_ELEMENTS)*TAMANY_ELEMENTS,
@@ -71,25 +76,42 @@ namespace Robot_Git
             //Pintar els elements
             pintaTresor(0);
             pintaRobot(1);
+            pintaFlecha(2);
 
             //Iniciar temporitzador
             temporitzador.Start();
+        }
+
+        private void pintaFlecha(int index)
+        {
+            //Pintar flecha
+            Ellipse flecha = new Ellipse();
+            flecha.Width = TAMANY_ELEMENTS/3;
+            flecha.Height = TAMANY_ELEMENTS/3;
+            flecha.Fill = imgFlecha;
+
+            Canvas.SetTop(flecha, posicioRobot.Y + TAMANY_ELEMENTS/4);
+            Canvas.SetLeft(flecha, posicioRobot.X + TAMANY_ELEMENTS / 4);
+            canvasRobot.Children.Insert(index, flecha);
+
+            //Direccio de la flecha
+            if (direccio == (int)Direccions.NORD) imgFlecha.ImageSource = new BitmapImage(new Uri("flecha_nord.png", UriKind.Relative));
+            else if (direccio == (int)Direccions.EST) imgFlecha.ImageSource = new BitmapImage(new Uri("flecha_est.png", UriKind.Relative));
+            else if (direccio == (int)Direccions.OEST) imgFlecha.ImageSource = new BitmapImage(new Uri("flecha_oest.png", UriKind.Relative));
+            else imgFlecha.ImageSource = new BitmapImage(new Uri("flecha_sud.png", UriKind.Relative));
+
+
+            //Eliminar l'anterior flecha
+            if (canvasRobot.Children.Count > 3)
+            {
+                canvasRobot.Children.RemoveAt(3);
+            }
         }
 
         private void temporitzador_Tick(object sender, EventArgs e)
         {
             GiraRobot();
             MoureRobot();
-            RobotGuanya();
-        }
-
-        private void RobotGuanya()
-        {
-            if(posicioRobot.X == posicioTresor.X && posicioRobot.Y == posicioTresor.Y)
-            {
-                MessageBox.Show("Has guanyat!");
-                this.Close();
-            }
         }
 
         private void GiraRobot()
@@ -125,31 +147,30 @@ namespace Robot_Git
                 {
                     case (int)Direccions.NORD:
                         posicioRobot.Y -= TAMANY_ELEMENTS;
-                        pintaRobot(1);
                         break;
                     case (int)Direccions.SUD:
                         posicioRobot.Y += TAMANY_ELEMENTS;
-                        pintaRobot(1);
                         break;
                     case (int)Direccions.OEST:
                         posicioRobot.X -= TAMANY_ELEMENTS;
-                        pintaRobot(1);
                         break;
                     case (int)Direccions.EST:
                         posicioRobot.X += TAMANY_ELEMENTS;
-                        pintaRobot(1);
                         break;
                 }
+                
             }
             if (posicioRobot.X < 0 && direccio == (int)Direccions.OEST) posicioRobot.X = 500 - TAMANY_ELEMENTS;
             else if (posicioRobot.X > 500 - TAMANY_ELEMENTS && direccio == (int)Direccions.EST) posicioRobot.X = 0;
             else if (posicioRobot.Y < 0 && direccio == (int)Direccions.NORD) posicioRobot.Y = 500 - TAMANY_ELEMENTS;
             else if (posicioRobot.Y > 500 - TAMANY_ELEMENTS && direccio == (int)Direccions.SUD) posicioRobot.Y = 0;
             pintaRobot(1);
+            pintaFlecha(2);
         }
 
         private void pintaRobot(int index)
         {
+            
             //Crear robot
             Ellipse robot = new Ellipse();
             robot.Width = TAMANY_ELEMENTS;
@@ -161,7 +182,11 @@ namespace Robot_Git
             Canvas.SetLeft(robot, posicioRobot.X);
             canvasRobot.Children.Insert(index, robot);
 
-            if (canvasRobot.Children.Count > 2) canvasRobot.Children.RemoveAt(2);
+            //Eliminar l'anterior robot
+            if (canvasRobot.Children.Count > 3)
+            {
+                canvasRobot.Children.RemoveAt(2);
+            }
         }
 
         private void pintaTresor(int index)
