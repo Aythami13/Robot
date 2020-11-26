@@ -63,7 +63,8 @@ namespace Robot_Git
             //Temporitzador
             DispatcherTimer temporitzador = new DispatcherTimer();
             temporitzador.Tick += new EventHandler(temporitzador_Tick);
-            temporitzador.Interval = new TimeSpan(1000000);
+            temporitzador.Interval = new TimeSpan(100000);
+
 
 
             //Indicar la imatge als ImageBrush
