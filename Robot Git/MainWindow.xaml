@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Robot_Git"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="600" Width="600" ResizeMode="NoResize">
+    <Canvas Width="500" Height="500" Name="canvasRobot" Background="Aqua">
         
-    </Grid>
+    </Canvas>
 </Window>
