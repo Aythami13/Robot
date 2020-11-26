@@ -1,0 +1,15 @@
+C:\Users\aytha\source\repos\Robot Git\Robot Git\bin\Debug\Robot Git.exe.config
+C:\Users\aytha\source\repos\Robot Git\Robot Git\bin\Debug\Robot Git.exe
+C:\Users\aytha\source\repos\Robot Git\Robot Git\bin\Debug\Robot Git.pdb
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.csprojAssemblyReference.cache
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\MainWindow.g.cs
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\App.g.cs
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git_MarkupCompile.cache
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git_MarkupCompile.lref
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\MainWindow.baml
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.g.resources
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot_Git.Properties.Resources.resources
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.csproj.GenerateResource.cache
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.csproj.CoreCompileInputs.cache
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.exe
+C:\Users\aytha\source\repos\Robot Git\Robot Git\obj\Debug\Robot Git.pdb
