@@ -49,6 +49,8 @@ namespace Robot_Git
         private ImageBrush imgRobot = new ImageBrush();
         private string rutaRobot = "robot.jpg";
 
+        //Numero de moviments
+        private int nMoviments = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -87,7 +89,7 @@ namespace Robot_Git
         {
             if(posicioRobot.X == posicioTresor.X && posicioRobot.Y == posicioTresor.Y)
             {
-                MessageBox.Show("Has guanyat!");
+                MessageBox.Show("Has guanyat en "+ nMoviments +  " moviments!");
                 this.Close();
             }
         }
@@ -95,25 +97,30 @@ namespace Robot_Git
         private void GiraRobot()
         {
             int dau = random.Next(0, 3);
-            switch (direccio)
+            if(dau < 2)
             {
-                case (int)Direccions.NORD:
-                    if (dau == 0) direccio = (int)Direccions.OEST;
-                    else if (dau == 1) direccio = (int)Direccions.EST;
-                    break;
-                case (int)Direccions.SUD:
-                    if (dau == 0) direccio = (int)Direccions.EST;
-                    else if (dau == 1) direccio = (int)Direccions.OEST;
-                    break;
-                case (int)Direccions.EST:
-                    if (dau == 0) direccio = (int)Direccions.NORD;
-                    else if (dau == 1) direccio = (int)Direccions.SUD;
-                    break;
-                case (int)Direccions.OEST:
-                    if (dau == 0) direccio = (int)Direccions.SUD;
-                    else if (dau == 1) direccio = (int)Direccions.NORD;
-                    break;
+                switch (direccio)
+                {
+                    case (int)Direccions.NORD:
+                        if (dau == 0) direccio = (int)Direccions.OEST;
+                        else if (dau == 1) direccio = (int)Direccions.EST;
+                        break;
+                    case (int)Direccions.SUD:
+                        if (dau == 0) direccio = (int)Direccions.EST;
+                        else if (dau == 1) direccio = (int)Direccions.OEST;
+                        break;
+                    case (int)Direccions.EST:
+                        if (dau == 0) direccio = (int)Direccions.NORD;
+                        else if (dau == 1) direccio = (int)Direccions.SUD;
+                        break;
+                    case (int)Direccions.OEST:
+                        if (dau == 0) direccio = (int)Direccions.SUD;
+                        else if (dau == 1) direccio = (int)Direccions.NORD;
+                        break;
+                }
+                nMoviments++;
             }
+            
         }
 
         private void MoureRobot()
@@ -140,6 +147,7 @@ namespace Robot_Git
                         pintaRobot(1);
                         break;
                 }
+                nMoviments++;
             }
             if (posicioRobot.X < 0 && direccio == (int)Direccions.OEST) posicioRobot.X = 500 - TAMANY_ELEMENTS;
             else if (posicioRobot.X > 500 - TAMANY_ELEMENTS && direccio == (int)Direccions.EST) posicioRobot.X = 0;
