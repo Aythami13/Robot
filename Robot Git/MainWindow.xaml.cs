@@ -43,7 +43,7 @@ namespace Robot_Git
 
         //Imatge tresor
         private ImageBrush imgTresor = new ImageBrush();
-        private string rutaTresor = "tresor.jpg";
+        private string rutaTresor = "tresor23.jpg";
 
         //Imatge robot
         private ImageBrush imgRobot = new ImageBrush();
